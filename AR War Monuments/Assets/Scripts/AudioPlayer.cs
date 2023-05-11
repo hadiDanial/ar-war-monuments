@@ -72,6 +72,7 @@ public class AudioPlayer : MonoBehaviour
         startButton.gameObject.SetActive(true);
         stopButton.gameObject.SetActive(false);
         subtitleText.text = string.Empty;
+        timer = 0;
         audioSource.Stop();
     }
 }
