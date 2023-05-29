@@ -17,3 +17,4 @@ MonoBehaviour:
   countryName: Israel
   countryColor: {r: 0, g: 0.5452992, b: 0.990566, a: 1}
   countryFlag: {fileID: 0}
+  arrowTrailMaterial: {fileID: 2100000, guid: 263341e1979b0034eaaadb35fff837a7, type: 2}
