@@ -6,6 +6,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(Arrow))]
 public class Tank : MonoBehaviour
 {
     public TankSettings tankSettings;
