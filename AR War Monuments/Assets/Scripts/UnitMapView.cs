@@ -2,22 +2,23 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [RequireComponent(typeof(LineRenderer))]
-public class Arrow : MonoBehaviour
+public class UnitMapView : MonoBehaviour
 {
-    public TankSettings tankSettings;
+    public CountrySettings countrySettings;
     public List<Vector3> positions;
     private LineRenderer lineRenderer;
 
     private void Awake()
     {
         lineRenderer = GetComponent<LineRenderer>();
-        lineRenderer.startColor = tankSettings.countryColor;
-        lineRenderer.material = tankSettings.arrowTrailMaterial;
+        lineRenderer.startColor = countrySettings.countryColor;
+        lineRenderer.material = countrySettings.arrowTrailMaterial;
         UpdateLineRendererPositions(transform.position);
     }
-
+    
     private void UpdateLineRendererPositions(Vector3 newPosition)
     {
         positions.Add(newPosition);

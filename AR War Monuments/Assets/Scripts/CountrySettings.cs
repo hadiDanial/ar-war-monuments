@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Tank Settings")]
-public class TankSettings : ScriptableObject
+[CreateAssetMenu(menuName = "Country Settings")]
+public class CountrySettings : ScriptableObject
 {
     public GameObject tankModel;
     public string countryName;

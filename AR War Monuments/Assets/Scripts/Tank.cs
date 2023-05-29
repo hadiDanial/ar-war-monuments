@@ -4,12 +4,13 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(Arrow))]
+[RequireComponent(typeof(UnitMapView))]
 public class Tank : MonoBehaviour
 {
-    public TankSettings tankSettings;
+    [FormerlySerializedAs("tankSettings")] public CountrySettings countrySettings;
     public Transform modelTransformParent;
     public TMP_Text countryName;
     public RawImage backgroundColorImage;
@@ -32,9 +33,9 @@ public class Tank : MonoBehaviour
 
     private void SetupTank()
     {
-        countryName.text = tankSettings.countryName;
-        backgroundColorImage.color = tankSettings.countryColor;
-        GameObject tankModel = Instantiate(tankSettings.tankModel, modelTransformParent);
+        countryName.text = countrySettings.countryName;
+        backgroundColorImage.color = countrySettings.countryColor;
+        GameObject tankModel = Instantiate(countrySettings.tankModel, modelTransformParent);
         tankModel.transform.localPosition= Vector3.zero;
         tankModel.transform.localRotation = Quaternion.identity;
     }
