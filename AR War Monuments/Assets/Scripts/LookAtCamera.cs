@@ -6,7 +6,7 @@ using UnityEngine;
 public class LookAtCamera : MonoBehaviour
 {
     private Transform cameraTransform;
-
+    public List<Transform> targets;
     private void Awake()
     {
         if (cameraTransform == null)
@@ -15,6 +15,9 @@ public class LookAtCamera : MonoBehaviour
 
     void Update()
     {
-        transform.LookAt(2 * transform.position - cameraTransform.position);
+        foreach (Transform target in targets)
+        {
+            target.LookAt(2 * transform.position - cameraTransform.position);
+        }
     }
 }
