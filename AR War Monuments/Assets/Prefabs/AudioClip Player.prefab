@@ -391,7 +391,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68be145384ea74c45b3baf44ff57d1b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  subtitledAudio: {fileID: 0}
+  subtitledAudio: {fileID: 11400000, guid: f56280141ec66624f8c9daa451d332f5, type: 2}
   subtitleText: {fileID: 2954554728193665967}
   audioSource: {fileID: 2954554729530679108}
   startButton: {fileID: 2954554727943979987}

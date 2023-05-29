@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9691c6119ab6fe941b247e17af311e75, type: 3}
+  m_Name: TankExplosions
+  m_EditorClassIdentifier: 
+  clips:
+  - {fileID: 8300000, guid: 6cc44c732de0bd148a61d7332a02006e, type: 3}
+  - {fileID: 8300000, guid: b2c780e5330fedd469834a230207691e, type: 3}
+  - {fileID: 8300000, guid: ab7b492f5f1f2d54cb9c87a9b122a3b4, type: 3}
+  - {fileID: 8300000, guid: 6e17d5177960013479b3f133da691622, type: 3}
+  - {fileID: 8300000, guid: f8786cd8f15c7504aaf44277cbbfc003, type: 3}
+  - {fileID: 8300000, guid: fbb8d999482ae5d48af4fed37f43d6ea, type: 3}
+  - {fileID: 8300000, guid: f3daf13c9ad43874fa8107fa36968986, type: 3}

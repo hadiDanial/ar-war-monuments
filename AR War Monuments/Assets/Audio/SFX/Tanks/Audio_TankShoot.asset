@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9691c6119ab6fe941b247e17af311e75, type: 3}
+  m_Name: Audio_TankShoot
+  m_EditorClassIdentifier: 
+  clips:
+  - {fileID: 8300000, guid: 94db46df98d3b5c41b4b136ed14f3534, type: 3}
+  - {fileID: 8300000, guid: 8018a943e13078048bf8eaac8c768f01, type: 3}
+  - {fileID: 8300000, guid: c551643c9aeb10d4287585d4b0ac36a9, type: 3}
+  - {fileID: 8300000, guid: a310e921dd7502c429b8d4d96f2e6073, type: 3}
+  - {fileID: 8300000, guid: 1bc5dc0b0a0548943adfc4ab3e381695, type: 3}
+  - {fileID: 8300000, guid: 340c1d369691d2b48a2c9f665ef9725a, type: 3}
+  - {fileID: 8300000, guid: 2e776623ef0f3f642930a36bc65adcbd, type: 3}
