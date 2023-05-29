@@ -1,0 +1,84 @@
+# 3ds Max Wavefront OBJ Exporter v0.97b - (c)2007 guruware
+# File Created: 05.11.2020 11:56:15
+
+newmtl Default_Material
+	Ns 30.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.4471 0.5490 0.7059
+	Ks 1.0000 1.0000 1.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\on sell\Vehicle\Texture\1.PNG
+	map_Kd D:\on sell\Vehicle\Texture\1.PNG
+
+newmtl 1
+	Ns 30.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.4471 0.5490 0.7059
+	Ks 1.0000 1.0000 1.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\on sell\Vehicle\Texture\1.PNG
+	map_Kd D:\on sell\Vehicle\Texture\1.PNG
+
+newmtl 2
+	Ns 5.4739
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.4471 0.5490 0.7059
+	Ks 0.8400 0.8400 0.8400
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\on sell\Vehicle\Texture\2.PNG
+	map_Kd D:\on sell\Vehicle\Texture\2.PNG
+
+newmtl 3
+	Ns 5.4739
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.4471 0.5490 0.7059
+	Ks 0.8400 0.8400 0.8400
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\on sell\Vehicle\Texture\3.PNG
+	map_Kd D:\on sell\Vehicle\Texture\3.PNG
+
+newmtl 4
+	Ns 30.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.4471 0.5490 0.7059
+	Ks 1.0000 1.0000 1.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\on sell\Vehicle\Texture\4.PNG
+	map_Kd D:\on sell\Vehicle\Texture\4.PNG
+
+newmtl green
+	Ns 30.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2000 0.2000 0.2000
+	Kd 0.4471 0.5490 0.7059
+	Ks 1.0000 1.0000 1.0000
+	Ke 0.0000 0.0000 0.0000
