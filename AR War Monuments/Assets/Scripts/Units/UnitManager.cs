@@ -43,14 +43,25 @@ public class UnitManager : MonoBehaviour
             }
         }
 
+        // DebugCountryDictionary();
+
+        SetTargets();
+    }
+
+    private void DebugCountryDictionary()
+    {
         foreach (var country in countryUnitsDictionary.Keys)
         {
             foreach (var unit in countryUnitsDictionary[country])
             {
-                Debug.Log($"{country.name} | {unit.name}");    
+                Debug.Log($"{country.name} | {unit.name}");
             }
-            
         }
+    }
+
+    private void SetTargets()
+    {
+        // TODO: Give each unit a list of enemy units and ask it to navigate towards it using its NavMeshAgent and then attack...
     }
 
     public void ToggleMapView()
