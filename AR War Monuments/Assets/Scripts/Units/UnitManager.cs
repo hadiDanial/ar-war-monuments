@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,9 +7,62 @@ public class UnitManager : MonoBehaviour
     [SerializeField] private List<UnitGroup> groups;
     [SerializeField] private List<Transform> groupParents;
 
+    
+    public static UnitManager Instance { get; private set; }
+
     public List<Transform> GroupParents => groupParents;
     public List<UnitGroup> Groups => groups;
 
+    /// <summary>
+    /// Saves all the units for each country.
+    /// </summary>
+    private Dictionary<CountrySettings, List<Unit>> countryUnitsDictionary =
+        new Dictionary<CountrySettings, List<Unit>>();
+    private HashSet<Unit> units = new HashSet<Unit>();
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            Instance = this;
+        }
+    }
+    
+    private void Start()
+    {
+        if (countryUnitsDictionary == null || countryUnitsDictionary.Count == 0)
+        {
+            Unit[] allUnits = FindObjectsOfType<Unit>();
+            foreach (Unit unit in allUnits)
+            {
+                AddUnitToDictionary(unit);
+                AddUnitToSet(unit);
+            }
+        }
+
+        foreach (var country in countryUnitsDictionary.Keys)
+        {
+            foreach (var unit in countryUnitsDictionary[country])
+            {
+                Debug.Log($"{country.name} | {unit.name}");    
+            }
+            
+        }
+    }
+
+    public void ToggleMapView()
+    {
+        foreach (Unit unit in units)
+        {
+            unit.ToggleMapMode();
+        }
+    }
+    /// <summary>
+    /// This function should only be used in the editor! For easier editing.
+    /// </summary>
     public void SpawnUnitGroups()
     {
         for (int i = 0; i < groups.Count; i++)
@@ -33,11 +87,30 @@ public class UnitManager : MonoBehaviour
         for (int i = 0; i < unitAmount.amount; i++)
         {
             Vector3 position = GetUnitPosition(unitAmount.formation, unitAmount.spaceBetweenUnits, i, unitAmount.amount);
-            GameObject unit = Instantiate(unitAmount.unit).gameObject;
-            unit.transform.localPosition = position + parent.position;
-            unit.transform.SetParent(parentObj.transform);
+            
+            Unit unit = Instantiate(unitAmount.unit);
+            AddUnitToDictionary(unit);
+            Transform unitTransform = unit.gameObject.transform;
+            unitTransform.localPosition = position + parent.position;
+            unitTransform.SetParent(parentObj.transform);
         }
     }
+
+    private void AddUnitToDictionary(Unit unit)
+    {
+        List<Unit> countryUnits;
+        if (countryUnitsDictionary.ContainsKey(unit.CountrySettings))
+        {
+            countryUnits = countryUnitsDictionary[unit.CountrySettings];
+        }
+        else
+        {
+            countryUnits = new List<Unit>();
+        }
+        countryUnits.Add(unit);
+        countryUnitsDictionary[unit.CountrySettings] = countryUnits;
+    }
+    private void AddUnitToSet(Unit unit) => units.Add(unit);
 
     private Vector3 GetUnitPosition(UnitFormation formation, float spaceBetweenUnits, int index, int amount)
     {
@@ -96,7 +169,7 @@ public class UnitManager : MonoBehaviour
         {
             foreach (Transform parent in groupParents)
             {
-                DestroyImmediate(parent.gameObject);
+                UnityEditor.EditorApplication.delayCall += () => { DestroyImmediate(parent.gameObject); };
             }
             groupParents.Clear();
             return;
@@ -112,10 +185,7 @@ public class UnitManager : MonoBehaviour
         {
             Transform toRemove = groupParents[groupParents.Count - 1];
             groupParents.RemoveAt(groupParents.Count - 1);
-            UnityEditor.EditorApplication.delayCall+=()=>
-            {
-                DestroyImmediate(toRemove.gameObject);
-            };
+            UnityEditor.EditorApplication.delayCall+=()=> { DestroyImmediate(toRemove.gameObject); };
         }
 
         for (int i = 0; i < groups.Count; i++)
