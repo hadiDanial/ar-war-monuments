@@ -41,12 +41,17 @@ public class Bullet : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         Unit directHitUnit = collision.gameObject.GetComponent<Unit>();
-        AudioManager.Instance.PlayFromList(audioSource, bulletImpactAudioClips);
+        AudioManager.Instance.PlayFromList(transform.position, bulletImpactAudioClips);
         if(blowupParticles != null)
             Instantiate(blowupParticles, transform.position, Quaternion.identity);
         
         if(directHitUnit != null)
             directHitUnit.Damage(directHitDamage);
+        if(blastDamage <= 0 || blastRadius <= 0)
+        {
+            Destroy(gameObject);
+            return;
+        }
         
         Collider[] colliders = Physics.OverlapSphere(transform.position, blastRadius);
         foreach (Collider col in colliders)

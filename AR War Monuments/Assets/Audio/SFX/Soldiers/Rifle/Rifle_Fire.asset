@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9691c6119ab6fe941b247e17af311e75, type: 3}
+  m_Name: Rifle_Fire
+  m_EditorClassIdentifier: 
+  clips:
+  - {fileID: 8300000, guid: 52eee3472cd0d7744a172523797ea3ea, type: 3}
+  - {fileID: 8300000, guid: 9d3e45f5c63735545851c0f2a9f64e02, type: 3}
+  - {fileID: 8300000, guid: 3a2bf69b11d822b428312c6ed90bc636, type: 3}
+  - {fileID: 8300000, guid: d22c5d7d5974cb74eba98d0719fa2d67, type: 3}
+  - {fileID: 8300000, guid: ca1828437bdc5c44bb894ea7016e8e46, type: 3}
+  - {fileID: 8300000, guid: c823a406af2d68c42b4a118def348076, type: 3}
+  - {fileID: 8300000, guid: 44649707da74fd845b1d93afcaf65da0, type: 3}
+  - {fileID: 8300000, guid: ab7d269e61ae8ed43a2527c7aad3ecc8, type: 3}
+  - {fileID: 8300000, guid: 7b585c2af93bd354d8482276cffd558c, type: 3}
+  - {fileID: 8300000, guid: 49ef74d18a17e3646a22f9cfc389798c, type: 3}
+  - {fileID: 8300000, guid: 94c3c1c81762ba4478e39ecb81d3f1f4, type: 3}
+  - {fileID: 8300000, guid: 28caa4f2d5bf0dc45b303d8f91968317, type: 3}
+  - {fileID: 8300000, guid: f27afdc14c5c67c45b3770d298921de3, type: 3}
+  - {fileID: 8300000, guid: 52587398ea5f1304db37db6138a995a9, type: 3}
+  - {fileID: 8300000, guid: d0fce3bfe3c70234baeb76b46b202f77, type: 3}
+  - {fileID: 8300000, guid: 02e3e70d0a02d1e4ab508c3e14ce8e10, type: 3}
+  - {fileID: 8300000, guid: 153e4482902cb8b4880a393160f9212b, type: 3}
+  - {fileID: 8300000, guid: 1467e6da5dddeeb478def6ccf799c62b, type: 3}

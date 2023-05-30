@@ -27,7 +27,7 @@ public class UnitMapView : MonoBehaviour
     }
     private void SetMaterialProperties()
     {
-        lineRenderer.material = countrySettings.arrowTrailMaterial;
+        // lineRenderer.material = countrySettings.arrowTrailMaterial;
         // unitMapType = unit.GetUnitMapType();
         // Material material = unitImage.material;
         // foreach (UnitMapType type in Enum.GetValues(typeof(UnitMapType)))
@@ -60,13 +60,13 @@ public class UnitMapView : MonoBehaviour
         
         if(Vector3.Distance(position, positions[^1]) < minDistanceBetweenPoints)
             return;
-        positions.Add(position);
+        positions.Add(position + Vector3.up * 0.1f);
         UpdateLineRendererPositions();
     }
 
     public void SetEnabled(bool isEnabled)
     {
-        SetMaterialProperties();
+        // SetMaterialProperties();
         unitImage.gameObject.SetActive(isEnabled);
         lineRenderer.enabled = isEnabled;
     }

@@ -35,12 +35,13 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _DashAmount: 4
+    - _DashAmount: 100
     - _DashHeight: 1
+    - _DashTiling: 4
     - _DashWidth: 0.5
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _ScrollSpeed: 1
+    - _ScrollSpeed: -1
     m_Colors:
     - _Color: {r: 1, g: 0.078431375, b: 0, a: 1}
   m_BuildTextureStacks: []

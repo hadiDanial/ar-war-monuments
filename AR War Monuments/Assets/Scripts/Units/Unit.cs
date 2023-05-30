@@ -39,8 +39,8 @@ public abstract class Unit : MonoBehaviour
     public delegate void UnitDestroyed();
     public event UnitDestroyed OnUnitDestroyed;
     
-    private bool isDead, isActive = true;
-    protected bool IsMoving => navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance;
+    private bool isDead, isInARView = true;
+    protected bool IsMoving => navMeshAgent.hasPath && navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance;
     public CountrySettings CountrySettings => countrySettings;
 
     private void Awake()
@@ -65,8 +65,8 @@ public abstract class Unit : MonoBehaviour
 
     protected virtual void Update()
     {
-        if(!isActive) 
-            return;
+        // if(!isActive) 
+        //     return;
         timer += Time.deltaTime;
 
         if (CanAttack())
@@ -85,8 +85,9 @@ public abstract class Unit : MonoBehaviour
 
     protected virtual void Attack()
     {
-        GameObject.Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
-        AudioManager.Instance.PlayFromList(audioSource, attackSounds);
+        Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
+        if(isInARView)
+            AudioManager.Instance.PlayFromList(bulletSpawnPoint.position, attackSounds);
     }
     protected abstract void AttackTarget(Transform target);
     public void Move(Transform target)
@@ -111,16 +112,17 @@ public abstract class Unit : MonoBehaviour
             isDead = true;
             navMeshAgent.speed = 0;
             navMeshAgent.enabled = false;
-            AudioManager.Instance.PlayFromList(audioSource, deathSounds);
+            if(isInARView)
+                AudioManager.Instance.PlayFromList(bulletSpawnPoint.position, deathSounds);
             OnUnitDestroyed?.Invoke();
         }
     }
 
     public void ToggleMapMode()
     {
-        isActive = !isActive;
-        modelTransformParent.gameObject.SetActive(isActive);
-        mapView.SetEnabled(!isActive);
+        isInARView = !isInARView;
+        modelTransformParent.gameObject.SetActive(isInARView);
+        mapView.SetEnabled(!isInARView);
     }
     
     private void SetupUnit()

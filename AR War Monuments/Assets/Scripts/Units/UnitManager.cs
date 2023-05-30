@@ -107,7 +107,8 @@ public class UnitManager : MonoBehaviour
         {
             countryUnits = new List<Unit>();
         }
-        countryUnits.Add(unit);
+        if(!countryUnits.Contains(unit))
+            countryUnits.Add(unit);
         countryUnitsDictionary[unit.CountrySettings] = countryUnits;
     }
     private void AddUnitToSet(Unit unit) => units.Add(unit);

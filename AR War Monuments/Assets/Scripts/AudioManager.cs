@@ -26,12 +26,14 @@ public class AudioManager : MonoBehaviour
     {
         source.PlayOneShot(audioClip);
     }
-    public void PlayFromList(AudioSource source, AudioClipList audioClipList)
+    public void PlayFromList(Vector3 position, AudioClipList audioClipList)
     {
         int index = UnityEngine.Random.Range(0, audioClipList.clips.Count);
         AudioClip audioClip = audioClipList.clips[index];
-        source.pitch = UnityEngine.Random.Range(0.98f, 1.02f);
-        source.PlayOneShot(audioClip);
+        AudioSource.PlayClipAtPoint(audioClip, position);
+        
+//        source.pitch = UnityEngine.Random.Range(0.98f, 1.02f);
+  //      source.PlayOneShot(audioClip);
     }
     
     public void PlayAtPoint(AudioClip audioClip, Vector3 position)
