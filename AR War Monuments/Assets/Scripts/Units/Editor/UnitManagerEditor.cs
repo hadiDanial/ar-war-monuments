@@ -19,7 +19,7 @@ public class UnitManagerEditor : Editor
     {
         if (GUILayout.Button("Spawn Units"))
         {
-            manager.SpawnUnits();
+            manager.SpawnUnitGroups();
         }
         base.OnInspectorGUI();
     }
