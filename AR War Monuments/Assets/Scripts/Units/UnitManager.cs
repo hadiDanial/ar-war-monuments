@@ -1,17 +1,11 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using UnityEditor;
 using UnityEngine;
 
 public class UnitManager : MonoBehaviour
 {
     [SerializeField] private List<UnitGroup> groups;
-    [SerializeField] private List<Vector3> groupLocations;
     [SerializeField] private List<Transform> groupParents;
 
-    public List<Vector3> GroupLocations => groupLocations;
     public List<Transform> GroupParents => groupParents;
     public List<UnitGroup> Groups => groups;
 
@@ -30,6 +24,7 @@ public class UnitManager : MonoBehaviour
         }
     }
 
+
     private void SpawnUnit(UnitAmount unitAmount, int index, Transform parent)
     {
         GameObject parentObj = new GameObject($"Units_{index}");
@@ -39,7 +34,7 @@ public class UnitManager : MonoBehaviour
         {
             Vector3 position = GetUnitPosition(unitAmount.formation, unitAmount.spaceBetweenUnits, i, unitAmount.amount);
             GameObject unit = Instantiate(unitAmount.unit).gameObject;
-            unit.transform.localPosition = position;
+            unit.transform.localPosition = position + parent.position;
             unit.transform.SetParent(parentObj.transform);
         }
     }
@@ -77,9 +72,16 @@ public class UnitManager : MonoBehaviour
         }
     }
 
+    public void DestroyUnits()
+    {
+        foreach (Transform gTransform in groupParents)
+        {
+            DestroyExistingObjects(gTransform);
+        }
+    }
+    
     private void DestroyExistingObjects(Transform groupParent)
     {
-        // TODO: Destroy previously spawned objects so we can reinstantiate them.
         for (int i = groupParent.childCount - 1; i >= 0; i--)
         {
             DestroyImmediate(groupParent.GetChild(i).gameObject);
@@ -92,17 +94,12 @@ public class UnitManager : MonoBehaviour
     {
         if (groups.Count == 0)
         {
-            groupLocations.Clear();
             foreach (Transform parent in groupParents)
             {
                 DestroyImmediate(parent.gameObject);
             }
             groupParents.Clear();
             return;
-        }
-        while (groupLocations.Count < groups.Count)
-        {
-            groupLocations.Add(new Vector3());
         }
         while (groupParents.Count < groups.Count)
         {
@@ -111,8 +108,6 @@ public class UnitManager : MonoBehaviour
             groupParents.Add(newObject.transform);
         }
 
-        while (groupLocations.Count > groups.Count)
-            groupLocations.RemoveAt(groupLocations.Count - 1);
         while (groupParents.Count > groups.Count)
         {
             Transform toRemove = groupParents[groupParents.Count - 1];

@@ -9,10 +9,12 @@ using UnityEngine.XR;
 public class UnitManagerEditor : Editor
 {
     private UnitManager manager;
-
+    private GUIStyle labelStyle;
     private void OnEnable()
     {
         manager = target as UnitManager;
+        labelStyle = new GUIStyle();
+        labelStyle.fontSize = 36;
     }
 
     public override void OnInspectorGUI()
@@ -21,25 +23,30 @@ public class UnitManagerEditor : Editor
         {
             manager.SpawnUnitGroups();
         }
+        if (GUILayout.Button("Destroy Units"))
+        {
+            manager.DestroyUnits();
+        }
         base.OnInspectorGUI();
     }
 
     private void OnSceneGUI()
     {
         
-        for (int i = 0; i < manager.GroupLocations.Count; i++)
+        for (int i = 0; i < manager.GroupParents.Count; i++)
         {
             EditorGUI.BeginChangeCheck();    
-            Vector3 position = manager.GroupLocations[i];
+            Vector3 position = manager.GroupParents[i].position;
             position = Handles.PositionHandle(position, Quaternion.identity);
             Handles.color = Color.green;
-            Handles.SphereHandleCap(0, position, Quaternion.identity, 2f, EventType.Repaint);
-            Handles.Label(position + 0.2f * Vector3.up, $"G{i}");
+            var size = 5f;
+            Handles.SphereHandleCap(0, position, Quaternion.identity, size, EventType.Repaint);
+            Handles.Label(position + size * Vector3.up, $"G{i}", labelStyle);
             
             if (EditorGUI.EndChangeCheck())
             {
                 Undo.RecordObject(manager, $"Moved Group {i}");
-                manager.GroupLocations[i] = position;
+                manager.GroupParents[i].position = position;
             }        
         }
     }
