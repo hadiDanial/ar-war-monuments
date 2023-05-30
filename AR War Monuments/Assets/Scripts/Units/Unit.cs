@@ -41,6 +41,7 @@ public abstract class Unit : MonoBehaviour
     
     private bool isDead, isActive = true;
     protected bool IsMoving => navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance;
+    public CountrySettings CountrySettings => countrySettings;
 
     private void Awake()
     {
@@ -53,11 +54,8 @@ public abstract class Unit : MonoBehaviour
         mapView.SetEnabled(false);
 
         SetRandomTimerValue();
-    }
+        
 
-    private void Start()
-    {
-        Manager.Instance.AddUnit(this);
     }
 
     private void SetRandomTimerValue()
@@ -74,7 +72,7 @@ public abstract class Unit : MonoBehaviour
         if (CanAttack())
         {
             Attack();
-            timer = 0;
+            SetRandomTimerValue();
         }
     }
 
