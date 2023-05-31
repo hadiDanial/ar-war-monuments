@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f93181f4afec55643b45aac7f519fbc9, type: 3}
-  m_Name: Syria_3_Tanks
+  m_Name: Syria_Tanks_Other
   m_EditorClassIdentifier: 
   unitsInGroup:
   - unit: {fileID: 7360094155443223138, guid: 5fd0e60bdf9278d4393407320bd3618c, type: 3}
-    amount: 4
+    amount: 2
     formation: 1
-    spaceBetweenUnits: 20
+    spaceBetweenUnits: 40

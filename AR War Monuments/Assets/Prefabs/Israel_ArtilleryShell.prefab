@@ -48,9 +48,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dac016f94bb0eba4d84e7ec2fce72308, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  directHitDamage: 60
+  directHitDamage: 40
   blastDamage: 10
-  bulletSpeed: 40
+  bulletSpeed: 80
   blastRadius: 9
   blowupParticles: {fileID: 0}
   bulletImpactAudioClips: {fileID: 11400000, guid: 253dd459b73bb6547a865c8b0ab90382,

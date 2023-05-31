@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f93181f4afec55643b45aac7f519fbc9, type: 3}
-  m_Name: Israel_Artillery
+  m_Name: Israel_Tanks
   m_EditorClassIdentifier: 
   unitsInGroup:
-  - unit: {fileID: 6010241537801412177, guid: 479b7e2c7a239a64299b4fa70f52c1c2, type: 3}
-    amount: 4
+  - unit: {fileID: 811156623505857649, guid: 548cdba7f8f95d94ca50c5de81112e47, type: 3}
+    amount: 3
     formation: 1
-    spaceBetweenUnits: 3.5
+    spaceBetweenUnits: 7

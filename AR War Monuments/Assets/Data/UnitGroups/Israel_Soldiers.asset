@@ -16,4 +16,4 @@ MonoBehaviour:
   - unit: {fileID: 7468354509537972711, guid: f7857ccc433dd9143948722cebfc67ce, type: 3}
     amount: 4
     formation: 3
-    spaceBetweenUnits: 3
+    spaceBetweenUnits: 10

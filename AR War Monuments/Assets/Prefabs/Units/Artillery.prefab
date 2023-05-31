@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3216383520853822241}
   - component: {fileID: 4457817398942936915}
   - component: {fileID: 8217892208390630543}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -146,7 +146,7 @@ GameObject:
   - component: {fileID: 1368072834940546536}
   - component: {fileID: 1999866116580069589}
   - component: {fileID: 6189055461094496031}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Color
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -219,7 +219,7 @@ GameObject:
   - component: {fileID: 910902196652887863}
   - component: {fileID: 6492572968516432297}
   - component: {fileID: 1681421190968674688}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: UnitMapImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -294,7 +294,7 @@ GameObject:
   - component: {fileID: 6992046656675243225}
   - component: {fileID: 5247868056486190506}
   - component: {fileID: 4809237144753786897}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -409,7 +409,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 875670790623827995}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -423,7 +423,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5218668700091826235}
-  m_LocalRotation: {x: -0.5, y: 0.5, z: 0.5, w: 0.5}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -431,7 +431,7 @@ Transform:
   - {fileID: 6330532966578909324}
   m_Father: {fileID: 6010241537801412178}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -90, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6010241537801412176
 GameObject:
   m_ObjectHideFlags: 0
@@ -447,7 +447,7 @@ GameObject:
   - component: {fileID: 1298512270138483373}
   - component: {fileID: 3520210585810572843}
   - component: {fileID: 4868842803851613570}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Artillery
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -756,7 +756,7 @@ GameObject:
   - component: {fileID: 8711666012990441331}
   - component: {fileID: 1867820788612204349}
   - component: {fileID: 4110723939625478633}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Artillery_V2(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -770,7 +770,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6493260586114738635}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
@@ -778,7 +778,7 @@ Transform:
   - {fileID: 4685160317887855828}
   m_Father: {fileID: 875670790623827995}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -81.5813, y: -180, z: -90}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 180}
 --- !u!33 &8711666012990441331
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -852,7 +852,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4685160317887855828}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -866,11 +866,11 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8689211844492837858}
-  m_LocalRotation: {x: 0.7109529, y: 0, z: 0, w: 0.7032397}
-  m_LocalPosition: {x: 0, y: -0.0288, z: 0.0122}
+  m_LocalRotation: {x: 0.709433, y: 0.0019416097, z: 0.00090628106, w: 0.7047697}
+  m_LocalPosition: {x: 0, y: -0.02913, z: 0.01274}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6330532966578909324}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 90.625, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90.44202, y: -31.369995, z: -31.45398}
