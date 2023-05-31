@@ -16,8 +16,8 @@ MonoBehaviour:
   - unit: {fileID: 811156623505857649, guid: 548cdba7f8f95d94ca50c5de81112e47, type: 3}
     amount: 3
     formation: 2
-    spaceBetweenUnits: 100
+    spaceBetweenUnits: 50
   - unit: {fileID: 6010241537801412177, guid: 479b7e2c7a239a64299b4fa70f52c1c2, type: 3}
     amount: 2
     formation: 1
-    spaceBetweenUnits: 30
+    spaceBetweenUnits: 15

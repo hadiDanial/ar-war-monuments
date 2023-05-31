@@ -35,7 +35,7 @@ public abstract class Unit : MonoBehaviour
     private GameObject spawnedUnitModel;
     private AudioSource audioSource;
     private int currentHealth;
-    protected float attackTimer, moveTimer, moveEveryXSeconds = 3f;
+    protected float attackTimer, moveTimer, moveEveryXSeconds = 0.75f;
 
     public delegate void UnitDestroyed();
     public event UnitDestroyed OnUnitDestroyed;
@@ -85,7 +85,14 @@ public abstract class Unit : MonoBehaviour
 
     protected virtual void SetRotation()
     {
-        modelTransformParent.rotation = Quaternion.LookRotation(navMeshAgent.velocity);
+        if(isDead) return;
+        if(IsMoving)
+            modelTransformParent.rotation = Quaternion.LookRotation(navMeshAgent.velocity);
+        else
+        {
+            if(CurrentTarget != null)
+                modelTransformParent.rotation = Quaternion.LookRotation(CurrentTarget.transform.position - transform.position);
+        }
     }
 
     protected virtual bool CanAttack()
