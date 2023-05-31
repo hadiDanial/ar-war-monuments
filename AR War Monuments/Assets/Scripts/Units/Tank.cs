@@ -7,10 +7,6 @@ using UnityEngine.Serialization;
 public class Tank : Unit
 {
     [SerializeField, Tooltip("How long should it take to rotate 1 degree?")] private float rotationDuration = 0.05f;
-    public override UnitMapType GetUnitMapType()
-    {
-        return UnitMapType.Triangle;
-    }
 
     protected override bool CanAttack()
     {

@@ -5,6 +5,9 @@ using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 
+/// <summary>
+/// Controls the map view aspects of units: the trail they traveled on, displaying symbols etc...
+/// </summary>
 [RequireComponent(typeof(Unit), typeof(LineRenderer))]
 public class UnitMapView : MonoBehaviour
 {

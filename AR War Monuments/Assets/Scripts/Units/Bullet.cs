@@ -1,9 +1,8 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 
+/// <summary>
+/// A physical projectile representing artillery shells and rifle bullets.
+/// </summary>
 [RequireComponent(typeof(Rigidbody), typeof(AudioSource))]
 public class Bullet : MonoBehaviour
 {

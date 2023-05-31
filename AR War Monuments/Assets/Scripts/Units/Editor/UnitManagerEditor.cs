@@ -5,6 +5,9 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.XR;
 
+/// <summary>
+/// Custom editor for UnitManager
+/// </summary>
 [CustomEditor(typeof(UnitManager))]
 public class UnitManagerEditor : Editor
 {

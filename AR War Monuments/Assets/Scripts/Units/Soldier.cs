@@ -6,11 +6,6 @@ public class Soldier : Unit
 {
     [SerializeField] private Animator animator;
     
-    public override UnitMapType GetUnitMapType()
-    {
-        return UnitMapType.Circle;
-    }
-
     protected override void AttackTarget(Transform target)
     {
         

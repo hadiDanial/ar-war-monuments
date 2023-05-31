@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -7,6 +5,9 @@ using UnityEngine.AI;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 
+/// <summary>
+/// Base class for all units - Tanks, artillery, soldiers...
+/// </summary>
 [RequireComponent(typeof(NavMeshAgent), typeof(UnitMapView), typeof(BoxCollider))]
 [RequireComponent(typeof(AudioSource))]
 public abstract class Unit : MonoBehaviour
@@ -40,6 +41,8 @@ public abstract class Unit : MonoBehaviour
     public event UnitDestroyed OnUnitDestroyed;
     
     private bool isDead, isInARView = true;
+    private List<Unit> enemyUnits;
+    private Unit currentTarget;
     protected bool IsMoving => navMeshAgent.hasPath && navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance;
     public CountrySettings CountrySettings => countrySettings;
 
@@ -52,6 +55,7 @@ public abstract class Unit : MonoBehaviour
         if(bulletSpawnPoint == null)
             Debug.LogWarning($"{gameObject.name} is missing a bullet spawn point!");
         mapView.SetEnabled(false);
+        navMeshAgent.speed = movementSpeed;
 
         SetRandomTimerValue();
         
@@ -75,8 +79,6 @@ public abstract class Unit : MonoBehaviour
             SetRandomTimerValue();
         }
     }
-
-    public abstract UnitMapType GetUnitMapType();
     
     protected virtual bool CanAttack()
     {
@@ -97,7 +99,6 @@ public abstract class Unit : MonoBehaviour
     }
     public virtual void Move(Vector3 targetPosition)
     {
-        navMeshAgent.speed = movementSpeed;
         navMeshAgent.Move(targetPosition);
     }
 
@@ -147,5 +148,38 @@ public abstract class Unit : MonoBehaviour
     {
         ResetUnit();
         SetupUnit();
+    }
+
+    public void SetEnemies(List<Unit> enemyUnits)
+    {
+        this.enemyUnits = enemyUnits;
+        SelectTarget();
+        MoveToTarget();
+    }
+
+    private void MoveToTarget()
+    {
+        if(currentTarget != null)
+            Move(currentTarget.transform);
+    }
+
+    private void SelectTarget()
+    {
+        currentTarget = null;
+        float closestDistanceSqr = Mathf.Infinity;
+        Vector3 currentPosition = transform.position;
+        foreach (Unit possibleTarget in enemyUnits)
+        {
+            if (possibleTarget.isDead) continue;
+            Vector3 directionToTarget = possibleTarget.transform.position - currentPosition;
+            // Use square magnitude because we don't care about exact distance, just who is closest, and square distance is much cheaper to calculate
+            float distanceSqr = directionToTarget.sqrMagnitude;
+            if (distanceSqr < closestDistanceSqr)
+            {
+                currentTarget = possibleTarget;
+                closestDistanceSqr = distanceSqr;
+            }
+        }
+        
     }
 }

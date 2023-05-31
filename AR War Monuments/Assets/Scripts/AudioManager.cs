@@ -1,5 +1,8 @@
 ﻿using UnityEngine;
 
+/// <summary>
+/// Singleton for playing AudioClips.
+/// </summary>
 public class AudioManager : MonoBehaviour
 {
     [SerializeField] private AudioSource audioSource;

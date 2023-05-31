@@ -6,6 +6,9 @@ using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.XR.ARFoundation;
 
+/// <summary>
+/// Switches from AR camera to Map camera and back
+/// </summary>
 public class CameraController : MonoBehaviour
 {
     [SerializeField] private Transform terrain;

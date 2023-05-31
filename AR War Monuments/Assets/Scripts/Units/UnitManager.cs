@@ -2,11 +2,14 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Manages all units - spawning in the editor, giving them targets etc...
+/// </summary>
 public class UnitManager : MonoBehaviour
 {
     [SerializeField] private List<UnitGroup> groups;
     [SerializeField] private List<Transform> groupParents;
-
+    [SerializeField] private CountrySettings israel, syria;
     
     public static UnitManager Instance { get; private set; }
 
@@ -48,20 +51,19 @@ public class UnitManager : MonoBehaviour
         SetTargets();
     }
 
-    private void DebugCountryDictionary()
-    {
-        foreach (var country in countryUnitsDictionary.Keys)
-        {
-            foreach (var unit in countryUnitsDictionary[country])
-            {
-                Debug.Log($"{country.name} | {unit.name}");
-            }
-        }
-    }
-
     private void SetTargets()
     {
         // TODO: Give each unit a list of enemy units and ask it to navigate towards it using its NavMeshAgent and then attack...
+        List<Unit> israelUnits = countryUnitsDictionary[israel], syriaUnits = countryUnitsDictionary[syria];
+
+        foreach (Unit unit in israelUnits)
+        {
+            unit.SetEnemies(syriaUnits);
+        }
+        foreach (Unit unit in syriaUnits)
+        {
+            unit.SetEnemies(israelUnits);
+        }
     }
 
     public void ToggleMapView()
@@ -97,7 +99,7 @@ public class UnitManager : MonoBehaviour
         parentObj.transform.localPosition = Vector3.zero;
         for (int i = 0; i < unitAmount.amount; i++)
         {
-            Vector3 position = GetUnitPosition(unitAmount.formation, unitAmount.spaceBetweenUnits, i, unitAmount.amount);
+            Vector3 position = CalculateInitialUnitPositionByFormation(unitAmount.formation, unitAmount.spaceBetweenUnits, i, unitAmount.amount);
             
             Unit unit = Instantiate(unitAmount.unit);
             AddUnitToDictionary(unit);
@@ -124,7 +126,15 @@ public class UnitManager : MonoBehaviour
     }
     private void AddUnitToSet(Unit unit) => units.Add(unit);
 
-    private Vector3 GetUnitPosition(UnitFormation formation, float spaceBetweenUnits, int index, int amount)
+    /// <summary>
+    /// Given a formation and an index, calculate the position that the unit should be spawned on.
+    /// </summary>
+    /// <param name="formation">The formation to spawn the units in. (Horizontal/Vertical Line, Square, Circle)</param>
+    /// <param name="spaceBetweenUnits">How much space should be between the different units? (If Formation is Circle, it represents the radius)</param>
+    /// <param name="index">Index of this unit</param>
+    /// <param name="amount">Total amount of units in the group</param>
+    /// <returns></returns>
+    private Vector3 CalculateInitialUnitPositionByFormation(UnitFormation formation, float spaceBetweenUnits, int index, int amount)
     {
         switch (formation)
         {
@@ -173,8 +183,22 @@ public class UnitManager : MonoBehaviour
         }
     }
 
+    private void DebugCountryDictionary()
+    {
+        foreach (var country in countryUnitsDictionary.Keys)
+        {
+            foreach (var unit in countryUnitsDictionary[country])
+            {
+                Debug.Log($"{country.name} | {unit.name}");
+            }
+        }
+    }
+
 
 #if UNITY_EDITOR
+    /// <summary>
+    /// Updates values and objects in the scene whenever values change in the inspector - used for object setup and validation, making sure things are correctly setup.
+    /// </summary>
     private void OnValidate()
     {
         if (groups.Count == 0)
