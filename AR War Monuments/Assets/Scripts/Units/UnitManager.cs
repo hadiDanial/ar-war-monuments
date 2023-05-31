@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 /// <summary>
@@ -73,6 +74,28 @@ public class UnitManager : MonoBehaviour
             unit.ToggleMapMode();
         }
     }
+
+
+    private void AddUnitToDictionary(Unit unit)
+    {
+        List<Unit> countryUnits;
+        if (countryUnitsDictionary.ContainsKey(unit.CountrySettings))
+        {
+            countryUnits = countryUnitsDictionary[unit.CountrySettings];
+        }
+        else
+        {
+            countryUnits = new List<Unit>();
+        }
+        if(!countryUnits.Contains(unit))
+            countryUnits.Add(unit);
+        countryUnitsDictionary[unit.CountrySettings] = countryUnits;
+    }
+    private void AddUnitToSet(Unit unit) => units.Add(unit);
+
+
+
+#if UNITY_EDITOR
     /// <summary>
     /// This function should only be used in the editor! For easier editing.
     /// </summary>
@@ -91,7 +114,6 @@ public class UnitManager : MonoBehaviour
         }
     }
 
-
     private void SpawnUnit(UnitAmount unitAmount, int index, Transform parent)
     {
         GameObject parentObj = new GameObject($"Units_{index}");
@@ -101,30 +123,13 @@ public class UnitManager : MonoBehaviour
         {
             Vector3 position = CalculateInitialUnitPositionByFormation(unitAmount.formation, unitAmount.spaceBetweenUnits, i, unitAmount.amount);
             
-            Unit unit = Instantiate(unitAmount.unit);
+            Unit unit = PrefabUtility.InstantiatePrefab(unitAmount.unit) as Unit;
             AddUnitToDictionary(unit);
             Transform unitTransform = unit.gameObject.transform;
             unitTransform.localPosition = position + parent.position;
             unitTransform.SetParent(parentObj.transform);
         }
     }
-
-    private void AddUnitToDictionary(Unit unit)
-    {
-        List<Unit> countryUnits;
-        if (countryUnitsDictionary.ContainsKey(unit.CountrySettings))
-        {
-            countryUnits = countryUnitsDictionary[unit.CountrySettings];
-        }
-        else
-        {
-            countryUnits = new List<Unit>();
-        }
-        if(!countryUnits.Contains(unit))
-            countryUnits.Add(unit);
-        countryUnitsDictionary[unit.CountrySettings] = countryUnits;
-    }
-    private void AddUnitToSet(Unit unit) => units.Add(unit);
 
     /// <summary>
     /// Given a formation and an index, calculate the position that the unit should be spawned on.
@@ -195,7 +200,7 @@ public class UnitManager : MonoBehaviour
     }
 
 
-#if UNITY_EDITOR
+
     /// <summary>
     /// Updates values and objects in the scene whenever values change in the inspector - used for object setup and validation, making sure things are correctly setup.
     /// </summary>

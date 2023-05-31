@@ -8,7 +8,7 @@ public class Bullet : MonoBehaviour
 {
     [SerializeField] private int directHitDamage = 2, blastDamage = 1;
     [SerializeField] private float bulletSpeed = 10f;
-    [SerializeField, Range(0f, 5f)] private float blastRadius = 3;
+    [SerializeField, Range(0f, 10f)] private float blastRadius = 3;
     [SerializeField] private GameObject blowupParticles;
     [SerializeField] private AudioClipList bulletImpactAudioClips;
     private Rigidbody rb;

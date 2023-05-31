@@ -483,9 +483,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0385a3029ec1ca44bd39ffc1fca6159, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeBetweenShots: 5
-  movementSpeed: 5
-  maxHealth: 10
+  timeBetweenShots: 4
+  movementSpeed: 0
+  maxHealth: 100
   canMove: 0
   bulletSpawnPoint: {fileID: 4685160317887855828}
   bulletPrefab: {fileID: 8277510745656751894, guid: 07f7fe3412da41740b8889e972cc19af,

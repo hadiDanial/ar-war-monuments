@@ -11,7 +11,7 @@ using UnityEngine.XR.ARFoundation;
 /// </summary>
 public class CameraController : MonoBehaviour
 {
-    [SerializeField] private Transform terrain;
+    [SerializeField] private Renderer terrain;
     [SerializeField] private CinemachineVirtualCamera virtualARCamera;
     [SerializeField] private CinemachineVirtualCamera virtualOverheadCamera;
     [SerializeField] private ARCameraBackground ARCameraBackground;
@@ -33,6 +33,6 @@ public class CameraController : MonoBehaviour
         ARCameraManager.enabled = flag;
         virtualARCamera.Priority = flag ? 10 : 5;
         virtualOverheadCamera.Priority = !flag ? 10 : 5;
-        terrain.gameObject.SetActive(!flag);
+        terrain.enabled = !flag;
     }
 }
