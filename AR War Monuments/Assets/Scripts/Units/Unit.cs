@@ -30,6 +30,7 @@ public abstract class Unit : MonoBehaviour
     [SerializeField] private TMP_Text countryName;
     [SerializeField] private RawImage backgroundColorImage;
 
+    private BoxCollider boxCollider;
     private UnitMapView mapView;
     private NavMeshAgent navMeshAgent;
     private GameObject spawnedUnitModel;
@@ -51,6 +52,7 @@ public abstract class Unit : MonoBehaviour
         mapView = GetComponent<UnitMapView>();
         navMeshAgent = GetComponent<NavMeshAgent>();
         audioSource = GetComponent<AudioSource>();
+        boxCollider = GetComponent<BoxCollider>();
         currentHealth = maxHealth;
         if(bulletSpawnPoint == null)
             Debug.LogWarning($"{gameObject.name} is missing a bullet spawn point!");
@@ -136,6 +138,7 @@ public abstract class Unit : MonoBehaviour
         currentHealth = 0;
         navMeshAgent.speed = 0;
         navMeshAgent.enabled = false;
+        boxCollider.enabled = false;
         if (isInARView)
             AudioManager.Instance.PlayFromList(bulletSpawnPoint.position, deathSounds);
         OnUnitDestroyed?.Invoke();

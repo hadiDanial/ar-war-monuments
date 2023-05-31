@@ -71,6 +71,7 @@ public class UnitMapView : MonoBehaviour
     {
         // SetMaterialProperties();
         unitImage.gameObject.SetActive(isEnabled);
+        if (lineRenderer == null) lineRenderer = GetComponent<LineRenderer>();
         lineRenderer.enabled = isEnabled;
     }
 }
