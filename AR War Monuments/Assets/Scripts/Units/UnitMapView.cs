@@ -18,29 +18,20 @@ public class UnitMapView : MonoBehaviour
 
     private Unit unit;
     private LineRenderer lineRenderer;
-    private UnitMapType unitMapType;
+    private Transform unitImageTransform;
+    private static readonly Quaternion additionalRotation = Quaternion.Euler(90,-90,0);
+    
     private void Awake()
     {
         unit = GetComponent<Unit>();
         lineRenderer = GetComponent<LineRenderer>();
         lineRenderer.startColor = countrySettings.countryColor;
         lineRenderer.material = countrySettings.arrowTrailMaterial;
+        unitImageTransform = unitImage.transform;
         SetEnabled(false);
         AddPosition(transform.position);
     }
-    private void SetMaterialProperties()
-    {
-        // lineRenderer.material = countrySettings.arrowTrailMaterial;
-        // unitMapType = unit.GetUnitMapType();
-        // Material material = unitImage.material;
-        // foreach (UnitMapType type in Enum.GetValues(typeof(UnitMapType)))
-        // {
-        //     if(type == unitMapType)
-        //         material.EnableKeyword($"{type.ToString().ToUpper()}");
-        //     else
-        //         material.DisableKeyword($"{type.ToString().ToUpper()}");
-        // }
-    }
+
     private void UpdateLineRendererPositions()
     {
         lineRenderer.positionCount = positions.Count;
@@ -63,8 +54,13 @@ public class UnitMapView : MonoBehaviour
         
         if(Vector3.Distance(position, positions[^1]) < minDistanceBetweenPoints)
             return;
-        positions.Add(position + Vector3.up * 0.1f);
+        positions.Add(position + Vector3.up * 0.15f);
         UpdateLineRendererPositions();
+    }
+
+    public void SetRotation(Quaternion rotation)
+    {
+        unitImageTransform.rotation = rotation * additionalRotation;
     }
 
     public void SetEnabled(bool isEnabled)
@@ -75,5 +71,3 @@ public class UnitMapView : MonoBehaviour
         lineRenderer.enabled = isEnabled;
     }
 }
-
-public enum UnitMapType {Triangle, Circle, Square}

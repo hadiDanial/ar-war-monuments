@@ -35,7 +35,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _DashAmount: 10
+    - _DashAmount: 6
     - _DashHeight: 1
     - _DashWidth: 0.5
     - _QueueControl: 0

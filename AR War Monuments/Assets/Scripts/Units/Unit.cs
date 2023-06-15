@@ -88,13 +88,18 @@ public abstract class Unit : MonoBehaviour
     protected virtual void SetRotation()
     {
         if(isDead) return;
+        Quaternion rotation;
         if(IsMoving)
-            modelTransformParent.rotation = Quaternion.LookRotation(navMeshAgent.velocity);
+            rotation = Quaternion.LookRotation(navMeshAgent.velocity, Vector3.up);
         else
         {
-            if(CurrentTarget != null)
-                modelTransformParent.rotation = Quaternion.LookRotation(CurrentTarget.transform.position - transform.position);
+            if (CurrentTarget != null)
+                rotation = Quaternion.LookRotation(CurrentTarget.transform.position - transform.position, Vector3.up);
+            else rotation = Quaternion.identity;
         }
+
+        modelTransformParent.rotation = rotation;
+        mapView.SetRotation(rotation);
     }
 
     protected virtual bool CanAttack()
@@ -206,5 +211,11 @@ public abstract class Unit : MonoBehaviour
 
         if (CurrentTarget != null)
             CurrentTarget.OnUnitDestroyed += SelectTarget;
+        else
+        {
+            navMeshAgent.velocity = Vector3.zero;
+            navMeshAgent.enabled = false;
+            this.enabled = false;
+        }
     }
 }
