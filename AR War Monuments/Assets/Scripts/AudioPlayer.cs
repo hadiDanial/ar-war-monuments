@@ -21,6 +21,7 @@ public class AudioPlayer : MonoBehaviour
     {
         GetFirstSubtitle();
         audioSource.clip = subtitledAudio.audioClip;
+        stopButton.gameObject.SetActive(false);
     }
 
 
