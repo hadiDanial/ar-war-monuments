@@ -11,6 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainScene.unity
     guid: a1f80cc56a7592e49a5905b5bb0a4c41
+  - enabled: 1
+    path: Assets/Scenes/MainScene With Background.unity
+    guid: 1171419caa12d7449b351df8be591f90
   m_configObjects:
     Unity.XR.WindowsMR.Settings: {fileID: 11400000, guid: 744b813df90924c169af73489b8325de,
       type: 2}
