@@ -6,21 +6,19 @@ using UnityEngine.Serialization;
 
 public class Tank : Unit
 {
-    [SerializeField, Tooltip("How long should it take to rotate 1 degree?")] private float rotationDuration = 0.05f;
-    // protected override void SetRotation()
-    // {
-    //     if(isDead) return;
-    //     if(IsMoving)
-    //         base.SetRotation();
-    //     else
-    //     {
-    //         if(CurrentTarget != null)
-    //             modelTransformParent.rotation = Quaternion.LookRotation(CurrentTarget.transform.position - transform.position);
-    //     }
-    // }
+    [SerializeField] private AudioSource engineAudioSource, movingAudioSource;
+
     protected override bool CanAttack()
     {
         return base.CanAttack() && !IsMoving;
+    }
+
+    protected override void Update()
+    {
+        base.Update();
+        bool muted = IsMoving && AudioManager.Instance.IsMuted;
+        movingAudioSource.enabled = !muted;
+        engineAudioSource.enabled = !muted;
     }
 
     protected override void AttackTarget(Transform target)
@@ -28,16 +26,10 @@ public class Tank : Unit
         return;
     }
 
-    // protected override void Attack()
-    // {
-    //     AttackTarget(CurrentTarget.transform);
-    // }
-    //
-    // protected override void AttackTarget(Transform target)
-    // {
-    //     var duration = rotationDuration /
-    //                    Vector3.Angle(transform.forward, target.transform.position - transform.position);
-    //     transform.DOLookAt(target.position, duration, AxisConstraint.Y)
-    //         .OnComplete(base.Attack);
-    // }
+    protected override void Die()
+    {
+        engineAudioSource.enabled = false;
+        movingAudioSource.enabled = false;
+        base.Die();
+    }
 }

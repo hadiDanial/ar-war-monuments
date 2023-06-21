@@ -16,6 +16,7 @@ public class PreferenceManager : MonoBehaviour
 
     public void ToggleMuteSounds(bool val)
     {
+        isMuted = val;
         PlayerPrefs.SetInt("Muted", val ? 1 : 0);
         PlayerPrefs.Save();
     }

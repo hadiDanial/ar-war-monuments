@@ -9,7 +9,6 @@ using UnityEngine.UI;
 /// Base class for all units - Tanks, artillery, soldiers...
 /// </summary>
 [RequireComponent(typeof(NavMeshAgent), typeof(UnitMapView), typeof(BoxCollider))]
-[RequireComponent(typeof(AudioSource))]
 public abstract class Unit : MonoBehaviour
 {
     [Header("Unit Settings")]
@@ -34,7 +33,6 @@ public abstract class Unit : MonoBehaviour
     private UnitMapView mapView;
     private NavMeshAgent navMeshAgent;
     private GameObject spawnedUnitModel;
-    private AudioSource audioSource;
     private int currentHealth;
     protected float attackTimer, moveTimer, moveEveryXSeconds = 0.75f;
 
@@ -51,7 +49,6 @@ public abstract class Unit : MonoBehaviour
     {
         mapView = GetComponent<UnitMapView>();
         navMeshAgent = GetComponent<NavMeshAgent>();
-        audioSource = GetComponent<AudioSource>();
         boxCollider = GetComponent<BoxCollider>();
         currentHealth = maxHealth;
         if(bulletSpawnPoint == null)
