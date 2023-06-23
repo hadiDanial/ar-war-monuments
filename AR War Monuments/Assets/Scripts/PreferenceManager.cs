@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class PreferenceManager : MonoBehaviour
 {
     [SerializeField] private Toggle mutedToggle;
+    
     private bool? isMuted;
     private void Awake()
     {
@@ -23,12 +24,12 @@ public class PreferenceManager : MonoBehaviour
 
     public bool GetMutedSetting()
     {
-        if (isMuted.HasValue)
-            return isMuted.Value;
-        else
-        {
+        //if (isMuted.HasValue)
+        //   return isMuted.Value;
+        //else
+        //{
             isMuted = PlayerPrefs.HasKey("Muted") && (PlayerPrefs.GetInt("Muted") == 1 ? true : false);
             return isMuted.Value;
-        }
+        //}
     }
 }

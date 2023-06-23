@@ -34,7 +34,7 @@ public abstract class Unit : MonoBehaviour
     private NavMeshAgent navMeshAgent;
     private GameObject spawnedUnitModel;
     private int currentHealth;
-    protected float attackTimer, moveTimer, moveEveryXSeconds = 0.75f;
+    protected float attackTimer, updateDestinationTimer, calcDestinationEveryXSeconds = 0.75f;
 
     public delegate void UnitDestroyed();
     public event UnitDestroyed OnUnitDestroyed;
@@ -55,7 +55,7 @@ public abstract class Unit : MonoBehaviour
             Debug.LogWarning($"{gameObject.name} is missing a bullet spawn point!");
         mapView.SetEnabled(false);
         navMeshAgent.speed = movementSpeed;
-        moveTimer = 0;
+        updateDestinationTimer = 0;
         SetRandomTimerValue();
         
 
@@ -69,8 +69,8 @@ public abstract class Unit : MonoBehaviour
     protected virtual void Update()
     {
         attackTimer += Time.deltaTime;
-        if (IsMoving) moveTimer += Time.deltaTime;
-        if(moveTimer >= moveEveryXSeconds)
+        if (IsMoving) updateDestinationTimer += Time.deltaTime;
+        if(updateDestinationTimer >= calcDestinationEveryXSeconds)
             MoveToTarget();
         if (CanAttack())
         {
@@ -110,10 +110,10 @@ public abstract class Unit : MonoBehaviour
         if(isInARView)
             AudioManager.Instance.PlayFromList(bulletSpawnPoint.position, attackSounds);
     }
-    protected abstract void AttackTarget(Transform target);
+
     protected void MoveToTarget()
     {
-        moveTimer = 0;
+        updateDestinationTimer = 0;
         if(!canMove || isDead) return;
         if(CurrentTarget != null)
             Move(CurrentTarget.transform.position);

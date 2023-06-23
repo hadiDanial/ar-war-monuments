@@ -42,9 +42,9 @@ public class UnitManagerEditor : Editor
             Vector3 position = manager.GroupParents[i].position;
             position = Handles.PositionHandle(position, Quaternion.identity);
             Handles.color = Color.green;
-            var size = 5f;
+            var size = 3.5f;
             Handles.SphereHandleCap(0, position, Quaternion.identity, size, EventType.Repaint);
-            Handles.Label(position + size * Vector3.up, $"G{i}", labelStyle);
+            Handles.Label(position + size * 2 * Vector3.up, $"G{i}", labelStyle);
             
             if (EditorGUI.EndChangeCheck())
             {

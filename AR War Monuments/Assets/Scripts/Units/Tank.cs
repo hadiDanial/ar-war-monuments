@@ -16,15 +16,11 @@ public class Tank : Unit
     protected override void Update()
     {
         base.Update();
-        bool muted = IsMoving && AudioManager.Instance.IsMuted;
+        bool muted = !IsMoving || AudioManager.Instance.IsMuted;
         movingAudioSource.enabled = !muted;
         engineAudioSource.enabled = !muted;
     }
 
-    protected override void AttackTarget(Transform target)
-    {
-        return;
-    }
 
     protected override void Die()
     {

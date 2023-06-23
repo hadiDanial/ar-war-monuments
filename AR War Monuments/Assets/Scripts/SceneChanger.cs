@@ -22,4 +22,9 @@ public class SceneChanger : MonoBehaviour
         SceneManager.LoadScene("HomePage");
         LoaderUtility.Deinitialize();
     }
+    
+    public void ReloadScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
 }

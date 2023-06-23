@@ -7,8 +7,7 @@ public class SubtitledAudio : ScriptableObject
 {
     public AudioClip audioClip;
     public List<Subtitle> subtitles;
-
-
+    
     public Subtitle GetNextSubtitle(int index)
     {
         if(index < subtitles.Count)

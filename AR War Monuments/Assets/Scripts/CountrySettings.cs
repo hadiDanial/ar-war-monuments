@@ -7,6 +7,5 @@ public class CountrySettings : ScriptableObject
 {
     public string countryName;
     public Color countryColor;
-    public Sprite countryFlag;
     public Material arrowTrailMaterial;
 }

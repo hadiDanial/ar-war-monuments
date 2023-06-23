@@ -17,14 +17,14 @@ public class Soldier : Unit
         attackTimer += Time.deltaTime;
         if (IsMoving)
         {
-            moveTimer += Time.deltaTime;
+            updateDestinationTimer += Time.deltaTime;
             animator.SetBool("walking", true);
             animator.SetBool("firing", false);
         }
         else
         {
             animator.SetBool("walking", false);
-            if(moveTimer >= moveEveryXSeconds)
+            if(updateDestinationTimer >= calcDestinationEveryXSeconds)
                 MoveToTarget();
             if (CanAttack())
             {
@@ -40,30 +40,11 @@ public class Soldier : Unit
         }
         
     }
-
-    // protected override void SetRotation()
-    // {
-    //     if(isDead) return;
-    //     if(IsMoving)
-    //         base.SetRotation();
-    //     else
-    //     {
-    //         if(CurrentTarget != null)
-    //             modelTransformParent.rotation = Quaternion.LookRotation(CurrentTarget.transform.position - transform.position);
-    //     }
-    // }
-
+    
     protected override void Die()
     {
         base.Die();
         animator.SetTrigger("dead_front");
     }
 
-    protected override void AttackTarget(Transform target)
-    {
-        // var duration = rotationDuration /
-        //                Vector3.Angle(transform.forward, target.transform.position - transform.position);
-        // transform.DOLookAt(target.position, duration, AxisConstraint.Y)
-        //     .OnComplete(base.Attack);
-    }
 }

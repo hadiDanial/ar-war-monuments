@@ -65,7 +65,6 @@ public class UnitMapView : MonoBehaviour
 
     public void SetEnabled(bool isEnabled)
     {
-        // SetMaterialProperties();
         unitImage.gameObject.SetActive(isEnabled);
         if (lineRenderer == null) lineRenderer = GetComponent<LineRenderer>();
         lineRenderer.enabled = isEnabled;
